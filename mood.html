@@ -1,0 +1,173 @@
+<html>
+<head>
+  <title>Pedal Bud</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Pedro Ferreira">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous"> -->
+
+  <link rel="stylesheet" href="css/kube.min.css" />
+  <link rel="stylesheet" href="css/font-awesome.min.css" />
+  <link rel="stylesheet" href="css/custom.min.css" />
+  <!-- <link rel="shortcut icon" href="img/favicon.png" /> -->
+  <link href="http://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css"> 
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/webmidi"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/main.css">
+
+  <script src="js/pedals/manager.js"></script>
+  <script src="js/pedals/input-knobs.js"></script>
+
+</head>
+
+<body>
+  <div id="header"></div>
+
+
+  <div class="tuner">
+    <div class="tuner--top">
+      <h1 class="tuner--title-mood">Mood</h1>
+      <div>
+        <select id="midiSelect" class="midiSelect"></select>
+        <button class="presetButton button" id="midiOutputButton">Select</button>
+      </div>
+    </div>
+
+    <div class="tuner--mid mood">
+      <div class="knobRow">
+        <div class="knobRow--knob">
+          <label for="topLeftKnob">Time</label>
+          <input type="range" min="0" max="127" value="63" class="input-knob" data-src="img/knob.png" id="topLeftKnob" />
+          <output id="topLeftKnobValue" class="knob-text">63</output>
+        </div>
+
+        <div class="knobRow--knob">
+          <label for="mix">Mix</label>
+          <input type="range" min="0" max="127" value="63" class="input-knob" data-src="img/knob.png" id="topMiddleKnob" />
+          <output id="mixValue" class="knob-text">63</output>
+        </div>
+
+        <div class="knobRow--knob">
+          <label for="length">Length</label>
+          <input type="range" min="0" max="127" value="63" class="input-knob" data-src="img/knob.png" id="topMiddleKnob" />
+          <output id="lengthValue" class="knob-text">63</output>
+        </div>
+      </div>
+
+      <div class="knobRow">
+        <div class="knobRow--knob">
+          <label for="modifyWet">Modify</label>
+          <input type="range" min="0" max="127" value="63" class="input-knob" data-src="img/knob.png" id="bottomLeftKnob" />
+          <output id="bottomLeftKnobValue" class="knob-text">63</output>
+        </div>
+
+        <div class="knobRow--knob">
+          <label for="clock">Clock</label>
+          <input type="range" min="0" max="127" value="63" class="input-knob" data-src="img/knob.png" id="bottomMiddleKnob" />
+          <output id="bottomMiddleKnobValue" class="knob-text">63</output>
+        </div>
+
+        <div class="knobRow--knob">
+          <label for="modifyLoop">Modify</label>
+          <input type="range" min="0" max="127" value="63" class="input-knob" data-src="img/knob.png" id="bottomRightKnob" />
+          <output id="bottomRightKnobValue" class="knob-text">63</output>
+        </div>
+      </div>
+
+      <div class="radioRow">
+        <div class="radioRow--radios">
+          <div>
+            <input type="radio" name="radio-group1" value="a3" id="slip">
+            <label class="toggle toggle-yes" for="slip">SLIP</label>
+          </div>
+          <div>
+            <input type="radio" name="radio-group1" value="a2" id="delay">
+            <label class="toggle toggle-yes" for="delay">DELAY</label>
+          </div>
+          <div>
+            <input type="radio" name="radio-group1" value="a1" id="reverb">
+            <label class="toggle toggle-yes" for="reverb">REVERB</label>
+          </div>
+        </div>
+
+        <div class="radioRow--radios">
+          <div>
+            <input type="radio" name="radio-group2" value="b3" id="idk1">
+            <label class="toggle toggle-yes" for="idk1"><i class="fa fa-undo"></i></label>
+          </div>
+          <div>
+            <input type="radio" name="radio-group2" value="b2" id="idk2">
+            <label class="toggle toggle-yes" for="idk2"><i class="fa fa-undo"></i><span>+IN</span></label>
+          </div>
+          <div>
+            <input type="radio" name="radio-group2" value="b1" id="idk3">
+            <label class="toggle toggle-yes" for="idk3">IN</label>
+          </div>
+        </div>
+
+        <div class="radioRow--radios">
+          <div>
+            <input type="radio" name="radio-group3" value="c3" id="stretch">
+            <label class="toggle toggle-yes" for="stretch">STRETCH</label>
+          </div>
+          <div>
+            <input type="radio" name="radio-group3" value="c2" id="tape">
+            <label class="toggle toggle-yes" for="tape">TAPE</label>
+          </div>
+          <div>
+            <input type="radio" name="radio-group3" value="c1" id="env">
+            <label class="toggle toggle-yes" for="env">ENV</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottomRow">
+        <div class="bottomRow-content"><span></span></div>
+        <div class="bottomRow-content">
+
+          <div class="tw-toggle">
+            <input type="radio" name="toggle" value="left" id="left">
+            <label class="toggle toggle-yes" for="left"><i class="fa fa-tint"></i></label>
+            <input checked type="radio" name="toggle" value="both" id="both">
+            <label class="toggle toggle-yes" for="both"><i class="fa fa-minus"></i></label>
+            <input type="radio" name="toggle" value="right" id="right">
+            <label class="toggle toggle-yes" for="right"><i class="fa fa-undo"></i></label>
+            <span></span>  
+          </div>
+        </div>
+        <div class="bottomRow-content">
+          <div class="bypass">
+            <button id="killButton" class="btn btn-red btn-circle m-1"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="tuner--bot">
+      <p>To Save a preset: Select your desired slot, press down both buttons on the Pedal, and then press Save/Load. To not mess up slots 1/2 you should leave the preset selector on the pedal in the middle position</p>
+      <div>
+        <select id="presetSelect" class="presetSelect"></select>
+        <button class="presetButton button" id="presetButton">Load/Save</button>
+      </div>
+    </div>
+
+  </div>
+ 
+
+
+</body>
+<script> 
+  $(function(){
+    $("#header").load("header.html"); 
+    $("#footer").load("footer.html"); 
+  });
+</script> 
+</script> 
+
+</html>

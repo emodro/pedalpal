@@ -1,0 +1,20 @@
+Tutorial:
+Your pedal must be connected to a midi device. I personally use a Roland UM-One along with a MIDI Box One.
+Read your pedal's manual for how to properly connect to midi.
+Note: Blooper is currently not supported via just USB
+
+Steps:
+. Make sure you are using chrome.
+. Make sure you are viewing the https version of the site.
+. Make sure you allow midi when the chrome pop up appears, this setting can be set in site settings on chrome.
+. Currently the page defaults to the UM-ONE, if you have a different device select it from the drop down and press the button.
+. Hit some buttons twist some knobs and pray.
+. If you have issues contact me and please list what hardware you are using and what you are seeing.
+
+Note: Currently the app is sending midi commands to all channels on the device, this means if you have other pedals plugged in via midi some weird stuff might happen.
+I don't so this was easier, but if it's annoying you reach out and I will make a change.
+
+I would love to add more pedals and more features, for that I more pedals and more time.  I have no idea if people other than me have a use for this, so please reach out if you are enjoying it.
+
+
+
